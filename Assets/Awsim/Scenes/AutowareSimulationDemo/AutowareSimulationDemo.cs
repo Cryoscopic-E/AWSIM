@@ -16,7 +16,7 @@ using System;
 using UnityEngine;
 using Awsim.Common;
 using Awsim.UI;
-using Awsim.Usecase;
+using Awsim.Usecase.PedestrianSimulation;
 using Awsim.Usecase.AwsimRvizPlugins;
 using Awsim.Usecase.TrafficSimulation;
 using Awsim.Entity;
@@ -56,7 +56,7 @@ namespace Awsim.Scene.AutowareSimulationDemo
 
         [Header("Function")]
         [SerializeField] TrafficSimulator _trafficSimulator;
-        [SerializeField] SimplePedestrianWalkerController[] _simplePedestrianWalkerControllers;
+        [SerializeField] PedestrianWalkerController[] _pedestrianWalkerControllers;
         [SerializeField] AwsimRvizPluginsClient _awsimRvizPluginsClient;
 
         [Header("Ego Vehicle")]
@@ -120,7 +120,7 @@ namespace Awsim.Scene.AutowareSimulationDemo
                 _egoVehicle.Initialize();
 
             // Initialize function.
-            foreach (var e in _simplePedestrianWalkerControllers)
+            foreach (var e in _pedestrianWalkerControllers)
                 e.Initialize();
 
             if (_useJsonConfig)
@@ -157,7 +157,7 @@ namespace Awsim.Scene.AutowareSimulationDemo
 
             _awsimRvizPluginsClient.OnUpdate();
 
-            foreach (var e in _simplePedestrianWalkerControllers)
+            foreach (var e in _pedestrianWalkerControllers)
                 e.OnUpdate();
 
             // Update ego vehicle.
@@ -176,7 +176,7 @@ namespace Awsim.Scene.AutowareSimulationDemo
             // Fixed update traffic.
             _trafficSimulator.OnFixedUpdate();
 
-            foreach (var e in _simplePedestrianWalkerControllers)
+            foreach (var e in _pedestrianWalkerControllers)
                 e.OnFixedUpdate();
 
             _awsimRvizPluginsClient.OnFixedUpdate();

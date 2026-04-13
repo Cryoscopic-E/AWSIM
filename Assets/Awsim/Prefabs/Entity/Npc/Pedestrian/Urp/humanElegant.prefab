@@ -510,7 +510,8 @@ GameObject:
   - component: {fileID: 5961390140746356088}
   - component: {fileID: 4756135193159448691}
   - component: {fileID: 712230838606425905}
-  - component: {fileID: 712230838606425918}
+  - component: {fileID: 459720010792921936}
+  - component: {fileID: 3758381196177205060}
   m_Layer: 0
   m_Name: humanElegant
   m_TagString: Untagged
@@ -629,7 +630,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &712230838606425918
+--- !u!114 &459720010792921936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -646,6 +647,23 @@ MonoBehaviour:
   _animator: {fileID: 5961390140746356088}
   _rayCastMaxDistance: 100
   _rayCastOriginOffset: 1
+--- !u!114 &3758381196177205060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085614658007487928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ce08e000d78cdeaac2d10515d2f15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pedestrian: {fileID: 459720010792921936}
+  _profile: {fileID: 0}
+  _waypoints: []
+  _crosswalkStart: {fileID: 0}
+  _crosswalkEnd: {fileID: 0}
 --- !u!1 &1210764754105639680
 GameObject:
   m_ObjectHideFlags: 0

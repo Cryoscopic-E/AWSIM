@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28df75985a9e2366eaecfa6d580b338c, type: 3}
+  m_Name: WanderPedestrianProfile
+  m_EditorClassIdentifier: 
+  <SpeedMin>k__BackingField: 0.8
+  <SpeedMax>k__BackingField: 1.4
+  <PauseDurationMin>k__BackingField: 0.5
+  <PauseDurationMax>k__BackingField: 2
+  <StoppingProbability>k__BackingField: 0.1
+  <AwarenessRadius>k__BackingField: 0.5
+  <ObstacleLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 4096
+  <ObstacleResponseMode>k__BackingField: 1
+  <WanderRadius>k__BackingField: 5
+  <DestinationTimeout>k__BackingField: 10
