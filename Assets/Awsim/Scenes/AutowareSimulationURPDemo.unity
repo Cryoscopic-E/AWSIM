@@ -20257,6 +20257,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1672878926}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &999001234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1085614658007487928, guid: 39ab74d4208420bcd9f0b067e7a67779, type: 3}
+  m_PrefabInstance: {fileID: 1846752154732882731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &999001235 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3758381196177205060, guid: 39ab74d4208420bcd9f0b067e7a67779, type: 3}
+  m_PrefabInstance: {fileID: 1846752154732882731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999001234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ce08e000d78cdeaac2d10515d2f15e, type: 3}
+  m_Name:
 --- !u!4 &880499149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 313897835417177858, guid: 39ab74d4208420bcd9f0b067e7a67779, type: 3}
@@ -39395,7 +39410,8 @@ MonoBehaviour:
   _controlModeUIWindow: {fileID: 2440277745156577248}
   _vehicleInputDeviceUIWindow: {fileID: 4585533390902202860}
   _trafficSimulator: {fileID: 7429951779185353924}
-  _pedestrianWalkerControllers: []
+  _pedestrianWalkerControllers:
+  - {fileID: 999001235}
   _awsimRvizPluginsClient: {fileID: 687437057}
   _egoVehicle: {fileID: 1134508167459629688}
   _useV2i: 0

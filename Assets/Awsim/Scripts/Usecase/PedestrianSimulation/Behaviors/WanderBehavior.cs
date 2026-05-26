@@ -73,7 +73,9 @@ namespace Awsim.Usecase.PedestrianSimulation
                 return new Pose(context.Position, context.Rotation);
             }
 
-            var moveDir = context.HasOverrideDirection ? context.OverrideDirection : toDestination.normalized;
+            var moveDir = (context.HasOverrideDirection && context.OverrideDirection.sqrMagnitude > 1e-6f)
+                ? context.OverrideDirection
+                : toDestination.normalized;
             var newPosition = context.Position + moveDir * _currentSpeed * deltaTime;
             var newRotation = Quaternion.LookRotation(moveDir, Vector3.up);
             return new Pose(newPosition, newRotation);

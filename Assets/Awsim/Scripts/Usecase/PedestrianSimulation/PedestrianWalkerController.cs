@@ -32,6 +32,7 @@ namespace Awsim.Usecase.PedestrianSimulation
         ObstacleAwareness _awareness;
         PedestrianBehaviorContext _context;
         Pose _lastPose;
+        bool _wasBlocked;
 
         /// <summary>
         /// Initialise this controller. Must be called by the Scene class before the first Update.
@@ -59,6 +60,7 @@ namespace Awsim.Usecase.PedestrianSimulation
             };
 
             _behavior.Start(_context);
+            Debug.Log($"[PedestrianWalkerController] {gameObject.name} initialised with {_behavior.GetType().Name} (profile={_profile?.name ?? "NULL"})", this);
         }
 
         /// <summary>Forwards animation tick to the underlying <see cref="Pedestrian"/>.</summary>
@@ -74,7 +76,11 @@ namespace Awsim.Usecase.PedestrianSimulation
             _context.Rotation = _pedestrian.PoseInput.rotation;
 
             var awareness = _awareness.Check(transform.position, transform.forward);
-            //Debug.LogWarning($"PEDESTRIAN::{_pedestrian.name} AWARE {awareness.ObstacleNormal} IS {(awareness.IsBlocked ? "BLOCKED":"FREE")}");
+            if (awareness.IsBlocked != _wasBlocked)
+            {
+                Debug.LogWarning($"[PedestrianWalkerController] {gameObject.name} awareness {(awareness.IsBlocked ? "BLOCKED" : "FREE")} normal={awareness.ObstacleNormal}", this);
+                _wasBlocked = awareness.IsBlocked;
+            }
             if (awareness.IsBlocked)
             {
                 switch (_profile.ObstacleResponseMode)
@@ -87,8 +93,16 @@ namespace Awsim.Usecase.PedestrianSimulation
 
                     case ObstacleResponse.SteerAround:
                         _context.IsPaused = false;
-                        _context.HasOverrideDirection = true;
-                        _context.OverrideDirection = Vector3.Cross(Vector3.up, awareness.ObstacleNormal).normalized;
+                        var steer = Vector3.Cross(Vector3.up, awareness.ObstacleNormal);
+                        if (steer.sqrMagnitude < 1e-6f)
+                        {
+                            _context.HasOverrideDirection = false;
+                        }
+                        else
+                        {
+                            _context.HasOverrideDirection = true;
+                            _context.OverrideDirection = steer.normalized;
+                        }
                         break;
                 }
             }
